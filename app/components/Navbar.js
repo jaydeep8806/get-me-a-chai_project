@@ -42,7 +42,7 @@ const Navbar = () => {
                   stroke="currentColor"
                   stroke-Linecap="round"
                   stroke-Linejoin="round"
-                  stroke-Width="2"
+                  strokeWidth="2"
                   d="m1 1 4 4 4-4"
                 />
               </svg>
@@ -59,7 +59,7 @@ const Navbar = () => {
               >
                 <li>
                   <Link
-                    href="#"
+                    href="/dashboard"
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     Dashboard
@@ -67,7 +67,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href={`/${session.user.name}`}
                     className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                   >
                     Your Page

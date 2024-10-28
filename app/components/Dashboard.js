@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { useSession, signIn, signOut } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 
 const Dashboard = () => {
   const { data: session } = useSession()
@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   return (
     <div className="container mx-auto py-5">
-      <h1 className="text-center my-5 text-3xl font-bold">
+      <h1 className="text-center my-5 text-3xl font-bold text-white">
         Welcome to your Dashboard
       </h1>
       <form className="max-w-2xl mx-auto">
@@ -39,9 +39,9 @@ const Dashboard = () => {
             name="name"
             id="name"
             className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg
-  bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700
-  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
-  dark:focus:border-blue-500"
+             bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700
+             dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+              dark:focus:border-blue-500"
           />
         </div>
 
@@ -93,7 +93,7 @@ const Dashboard = () => {
             className="block mb-2 text-sm font-medium text-gray-900
     dark:text-white"
           >
-            Profile
+            Profile Picture
           </label>
           <input
             value={form.profile ? form.profile : ''}
@@ -115,7 +115,7 @@ const Dashboard = () => {
             className="block mb-2 text-sm font-medium text-gray-900
     dark:text-white"
           >
-            Name
+            Cover Picture
           </label>
           <input
             value={form.cover ? form.cover : ''}
@@ -133,18 +133,18 @@ const Dashboard = () => {
         {/* input for razorpay id */}
         <div className="my-2">
           <label
-            htmlFor="razorpay"
+            htmlFor="razorpayid"
             className="block mb-2 text-sm font-medium text-gray-900
     dark:text-white"
           >
-            Razorpay
+            Razorpay id
           </label>
           <input
-            value={form.razorpay ? form.razorpay : ''}
+            value={form.razorpayid ? form.razorpayid : ''}
             onChange={handleChange}
             type="text"
-            name="razorpay"
-            id="razorpay"
+            name="razorpayid"
+            id="razorpayid"
             className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg
   bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700
   dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
@@ -155,18 +155,18 @@ const Dashboard = () => {
         {/* input for razorpay secret */}
         <div className="my-2">
           <label
-            htmlFor="razorpay"
+            htmlFor="razorpaysecret"
             className="block mb-2 text-sm font-medium text-gray-900
     dark:text-white"
           >
-            Razorpay
+            Razorpay secret
           </label>
           <input
-            value={form.razorpay ? form.razorpay : ''}
+            value={form.razorpaysecret ? form.razorpaysecret : ''}
             onChange={handleChange}
             type="text"
-            name="razorpay"
-            id="razorpay"
+            name="razorpaysecret"
+            id="razorpaysecret"
             className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg
   bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700
   dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
