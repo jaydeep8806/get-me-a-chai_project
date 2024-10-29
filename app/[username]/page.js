@@ -1,5 +1,5 @@
 import React from 'react'
-import Paymentpage from '/components/paymentpage'
+import Paymentpage from '../components/PaymentPage'
 
 const username = ({ params }) => {
   return (
