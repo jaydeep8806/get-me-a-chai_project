@@ -40,8 +40,8 @@ const Navbar = () => {
               >
                 <path
                   stroke="currentColor"
-                  stroke-Linecap="round"
-                  stroke-Linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   strokeWidth="2"
                   d="m1 1 4 4 4-4"
                 />

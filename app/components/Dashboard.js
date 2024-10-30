@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { fetchuser, updateProfile } from '@/actions/useractions'
 
 const Dashboard = () => {
   const { data: session } = useSession()
@@ -9,6 +10,7 @@ const Dashboard = () => {
   const [form, setform] = useState({})
 
   useEffect(() => {
+    getData()
     if (!session) {
       router.push('/login')
     }
@@ -18,12 +20,22 @@ const Dashboard = () => {
     setform({ ...form, [e.target.name]: e.target.value })
   }
 
+  const getData = async () => {
+    let u = await fetchuser(session?.user?.name)
+    setform(u)
+  }
+
+  const handleSubmit = async (e) => {
+    let a = await updateProfile(e, session?.user?.name)
+    alert('Profile Updated')
+  }
+
   return (
     <div className="container mx-auto py-5">
       <h1 className="text-center my-5 text-3xl font-bold text-white">
         Welcome to your Dashboard
       </h1>
-      <form className="max-w-2xl mx-auto">
+      <form className="max-w-2xl mx-auto" action={handleSubmit}>
         <div className="my-2">
           <label
             htmlFor="name"
@@ -33,7 +45,7 @@ const Dashboard = () => {
             Name
           </label>
           <input
-            value={form.name ? form.name : ''}
+            value={form?.name ? form?.name : ''}
             onChange={handleChange}
             type="text"
             name="name"
@@ -54,7 +66,7 @@ const Dashboard = () => {
             Email
           </label>
           <input
-            value={form.email ? form.email : ''}
+            value={form?.email ? form?.email : ''}
             onChange={handleChange}
             type="text"
             name="email"
@@ -75,7 +87,7 @@ const Dashboard = () => {
             Username
           </label>
           <input
-            value={form.username ? form.username : ''}
+            value={form?.username ? form?.username : ''}
             onChange={handleChange}
             type="text"
             name="username"
@@ -89,18 +101,18 @@ const Dashboard = () => {
 
         <div className="my-2">
           <label
-            htmlFor="profile"
+            htmlFor="profilepic"
             className="block mb-2 text-sm font-medium text-gray-900
     dark:text-white"
           >
             Profile Picture
           </label>
           <input
-            value={form.profile ? form.profile : ''}
+            value={form?.profilepic ? form?.profilepic : ''}
             onChange={handleChange}
             type="text"
-            name="profile"
-            id="profile"
+            name="profilepic"
+            id="profilepic"
             className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg
   bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700
   dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
@@ -111,18 +123,18 @@ const Dashboard = () => {
         {/* input for cover pc */}
         <div className="my-2">
           <label
-            htmlFor="cover"
+            htmlFor="coverpic"
             className="block mb-2 text-sm font-medium text-gray-900
     dark:text-white"
           >
             Cover Picture
           </label>
           <input
-            value={form.cover ? form.cover : ''}
+            value={form?.coverpic ? form?.coverpic : ''}
             onChange={handleChange}
             type="text"
-            name="cover"
-            id="cover"
+            name="coverpic"
+            id="coverpic"
             className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg
   bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700
   dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
@@ -140,7 +152,7 @@ const Dashboard = () => {
             Razorpay id
           </label>
           <input
-            value={form.razorpayid ? form.razorpayid : ''}
+            value={form?.razorpayid ? form?.razorpayid : ''}
             onChange={handleChange}
             type="text"
             name="razorpayid"
@@ -162,7 +174,7 @@ const Dashboard = () => {
             Razorpay secret
           </label>
           <input
-            value={form.razorpaysecret ? form.razorpaysecret : ''}
+            value={form?.razorpaysecret ? form?.razorpaysecret : ''}
             onChange={handleChange}
             type="text"
             name="razorpaysecret"
