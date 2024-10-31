@@ -7,9 +7,12 @@ import User from '@/models/User'
 
 export const initiate = async (amount, to_username, paymentform) => {
   await connectDb()
+  // fetch the secret of the user who is getting payment
+  let user = await User.findOne({ username: to_username })
+  const secret = user.razorpaysecret
   var instance = new Razorpay({
-    key_id: process.env.NEXT_PUBLIC_KEY_ID,
-    key_secret: process.env.KEY_SECRET,
+    key_id: user.razorpayid,
+    key_secret: secret,
   })
 
   instance.orders.create({
@@ -52,6 +55,7 @@ export const fetchpayments = async (username) => {
   // find all payments by decreasing order of amount and flatten object
   let p = await Payment.find({ to_user: username, done: true })
     .sort({ amount: -1 })
+    .limit(7)
     .lean()
   return p
 }
@@ -65,7 +69,13 @@ export const updateProfile = async (data, oldusername) => {
     let u = await User.findOne({ username: ndata.username })
     if (u) {
       return { error: 'username already exists' }
+      await User.updateOne({ email: ndata.email }, ndata)
+      await Payment.updateMany(
+        { to_user: oldusername },
+        { to_user: ndata.username }
+      )
     }
+  } else {
+    await User.updateOne({ email: ndata.email }, ndata)
   }
-  await User.updateOne({ email: ndata.email }, ndata)
 }

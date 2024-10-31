@@ -8,16 +8,16 @@ const Navbar = () => {
   const [showdropdown, setShowdropdown] = useState(false)
 
   return (
-    <nav className="bg-gray-900 shadow-lg shadow-white text-white flex justify-between items-center px-4 h-16">
+    <nav className="bg-gray-900 shadow-lg shadow-white  text-white flex justify-between items-center px-4 flex-col md:flex-row md:h-16">
       <Link
         className="logo font-bold text-lg flex justify-between items-center"
         href={'/'}
       >
         <img src="chai.gif" width={45} alt="" />
-        <span>GetMeAChai</span>
+        <span className="text-2xl md:text-base my-3 md:my-0">GetMeAChai</span>
       </Link>
 
-      <div className="relative">
+      <div className="relative flex flex-col md:block gap-4">
         {session && (
           <>
             <button
