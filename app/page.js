@@ -8,7 +8,7 @@ export default function Home() {
         <div className="font-bold gap-6 flex md:text-5xl justify-center items-center md:gap-2 text-3xl">
           Get Me A Chai
           <span>
-            <img src="chai.gif" width={88} alt="" />
+            <Image src="/chai.gif" height={88} width={88} alt="" />
           </span>
         </div>
 
@@ -44,9 +44,10 @@ export default function Home() {
         </h2>
         <div className="flex gap-5 justify-around">
           <div className="item space-y-3 flex flex-col items-center justify-center">
-            <img
+            <Image
               className="bg-slate-400 rounded-full p-1 text-black"
               width={88}
+              height={88}
               src="/yourself.gif"
               alt=""
             />
@@ -57,9 +58,10 @@ export default function Home() {
           </div>
 
           <div className="item space-y-3 flex flex-col items-center justify-center">
-            <img
+            <Image
               className="bg-slate-400 rounded-full p-1 text-black"
               width={88}
+              height={88}
               src="/coin1.gif"
               alt=""
             />
@@ -70,9 +72,10 @@ export default function Home() {
           </div>
 
           <div className="item space-y-3 flex flex-col items-center justify-center">
-            <img
+            <Image
               className="bg-slate-400 rounded-full p-1 text-black"
               width={88}
+              height={88}
               src="/crowd.gif"
               alt=""
             />
