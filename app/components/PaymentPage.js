@@ -137,7 +137,7 @@ const PaymentPage = ({ username }) => {
               {payments.length === 0 && <div>No payments yet</div>}
               {payments.map((p, i) => {
                 return (
-                  <li className="my-4 flex gap-2 items-center ">
+                  <li key={p.id} className="my-4 flex gap-2 items-center ">
                     <Image
                       width={33}
                       height={33}
