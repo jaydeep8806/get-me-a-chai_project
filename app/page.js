@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <div className="flex justify-center flex-col items-center text-white px-5 md:px-0 text-xs md:text-base h-[44vh] gap-4">
-        <div className="font-bold gap-6 flex md:text-5xl justify-center items-center md:gap-20 text-3xl">
+        <div className="font-bold gap-6 flex md:text-5xl justify-center items-center md:gap-2 text-3xl">
           Get Me A Chai
           <span>
             <img src="chai.gif" width={88} alt="" />
